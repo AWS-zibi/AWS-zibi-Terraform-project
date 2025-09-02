@@ -1,0 +1,6 @@
+ami_id       = "ami-0861f4e788f5069dd"
+instance_type = "t3.micro"
+key_pair     = "project-cloud"
+db_username  = "Cibi_project"
+db_password  = "Cibi#2525"
+my_ip        = "13.24.0.12/32"

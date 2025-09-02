@@ -9,20 +9,21 @@ resource "aws_launch_template" "app_lt" {
   }
 
   user_data = base64encode(<<-EOF
-              #!/bin/bash
-              yum update -y
-              amazon-linux-extras install docker -y
-              systemctl enable docker
-              systemctl start docker
-              docker run -d -p 80:80 nginx
-              EOF
-  )
+            #!/bin/bash
+            yum update -y
+            yum install -y httpd
+            systemctl enable httpd
+            systemctl start httpd
+            echo "Hello from Terraform Web Server" > /var/www/html/index.html
+            EOF
+)
+
 }
 
 resource "aws_autoscaling_group" "app_asg" {
-  desired_capacity     = 2
-  max_size             = 4
-  min_size             = 2
+  desired_capacity     = 1
+  max_size             = 2
+  min_size             = 1
   vpc_zone_identifier  = aws_subnet.private[*].id
   launch_template {
     id      = aws_launch_template.app_lt.id
