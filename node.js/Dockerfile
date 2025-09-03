@@ -1,5 +1,5 @@
-# ---------- Base ----------
-FROM node:20-alpine AS base
+# ---------- Build stage ----------
+FROM node:20-alpine AS builder
 WORKDIR /app
 
 # Install dependencies
@@ -9,23 +9,26 @@ RUN npm install --omit=dev
 # Copy source code
 COPY . .
 
-# Build Next.js app
+# Remove old build (safety)
+RUN rm -rf .next
+
+# Build the Next.js app
 RUN npm run build
 
-# ---------- Runtime ----------
+# ---------- Runtime stage ----------
 FROM node:20-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
 ENV PORT=8080
 
-# Copy built app and node_modules
-COPY --from=base /app/.next ./.next
-COPY --from=base /app/node_modules ./node_modules
-COPY --from=base /app/package.json ./package.json
-COPY --from=base /app/public ./public
+# Copy standalone build
+COPY --from=builder /app/.next/standalone ./
+
+# Copy public folder
+COPY --from=builder /app/public ./public
 
 EXPOSE 8080
 
-# Start Next.js
-CMD ["npx", "next", "start", "-p", "8080"]
+# Start server
+CMD ["node", "server.js"]

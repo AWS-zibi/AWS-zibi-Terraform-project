@@ -1,6 +1,3 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone', // ✅ needed for container deployment
+  output: 'standalone',
 };
-
-module.exports = nextConfig;
