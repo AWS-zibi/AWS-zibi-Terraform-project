@@ -1,6 +1,3 @@
-[2:00 PM] Prakash- Devops
-# Stage 1: build (keeps same base but you can install deps here if needed)
-
 FROM node:18 AS builder
 
 WORKDIR /app
