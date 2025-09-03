@@ -1,32 +1,31 @@
-# ---------- Base dependencies ----------
-FROM node:20-alpine AS deps
+# ---------- Base ----------
+FROM node:20-alpine AS base
 WORKDIR /app
+
+# Install dependencies
 COPY package*.json ./
 RUN npm install --omit=dev
 
-# ---------- Build stage ----------
-FROM node:20-alpine AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+# Copy source code
 COPY . .
+
+# Build Next.js app
 RUN npm run build
 
-# ---------- Production runtime ----------
+# ---------- Runtime ----------
 FROM node:20-alpine AS runner
 WORKDIR /app
 
-# Set environment variables
 ENV NODE_ENV=production
 ENV PORT=8080
 
-# Copy only what’s needed for runtime
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/public ./public
+# Copy built app and node_modules
+COPY --from=base /app/.next ./.next
+COPY --from=base /app/node_modules ./node_modules
+COPY --from=base /app/package.json ./package.json
+COPY --from=base /app/public ./public
 
-# Expose the port
 EXPOSE 8080
 
-# Start the app on the correct port
+# Start Next.js
 CMD ["npx", "next", "start", "-p", "8080"]
