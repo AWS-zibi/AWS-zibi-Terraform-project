@@ -15,16 +15,18 @@ RUN npm run build
 FROM node:20-alpine AS runner
 WORKDIR /app
 
+# Set environment variables
 ENV NODE_ENV=production
-ENV PORT=8080   # Match ECS container port
+ENV PORT=8080
 
 # Copy only what’s needed for runtime
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/public ./public   # Only if you have /public folder
+COPY --from=builder /app/public ./public
 
+# Expose the port
 EXPOSE 8080
 
-# Use environment variable PORT
+# Start the app on the correct port
 CMD ["npx", "next", "start", "-p", "8080"]
