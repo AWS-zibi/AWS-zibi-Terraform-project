@@ -16,16 +16,15 @@ FROM node:20-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
-ENV PORT=3000
+ENV PORT=8080   # Match ECS container port
 
 # Copy only what’s needed for runtime
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/public ./public   # Only if you have /public folder
 
-# Copy public folder *only if it exists*
-# (comment this line out if your repo has no /public directory)
-# COPY --from=builder /app/public ./public
+EXPOSE 8080
 
-EXPOSE 3000
-CMD ["npm", "start"]
+# Use environment variable PORT
+CMD ["npx", "next", "start", "-p", "8080"]
