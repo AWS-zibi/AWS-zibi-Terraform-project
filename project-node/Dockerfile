@@ -1,0 +1,25 @@
+[2:00 PM] Prakash- Devops
+# Stage 1: build (keeps same base but you can install deps here if needed)
+
+FROM node:18 AS builder
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install --production
+
+COPY . .
+ 
+# Stage 2: runtime (smaller image)
+
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY --from=builder /app .
+
+EXPOSE 3000
+
+CMD ["node", "index.js"]
+ 

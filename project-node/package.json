@@ -1,0 +1,19 @@
+[1:58 PM] Prakash- Devops
+{
+
+  "name": "hello-ecs",
+
+  "version": "1.0.0",
+
+  "main": "index.js",
+
+  "scripts": {
+
+    "start": "node index.js"
+
+  },
+
+  "dependencies": {}
+
+}
+ 
