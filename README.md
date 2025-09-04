@@ -1,7 +1,7 @@
 # 🚀 DevOps Project – AWS ECS + RDS + CI/CD
 
 ## 📌 Project Overview
-This project demonstrates a complete DevOps pipeline for deploying a containerized Node.js application on **AWS ECS Fargate** with **RDS** as the database, automated using Infrastructure as Code (Terraform/CloudFormation) and **CI/CD(CodePipeline)**.  
+  This project demonstrates a complete DevOps pipeline for deploying a containerized Node.js application on **AWS ECS Fargate** with **RDS** as the database, automated using Infrastructure as Code (Terraform/CloudFormation) and **CI/CD(CodePipeline)**.  
 The deployment ensures scalability, high availability, and observability using **CloudWatch** & **Terraform** & **ECS**.
 ---
 
