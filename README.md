@@ -14,21 +14,21 @@ The deployment ensures scalability, high availability, and observability using *
 **Part 1: Infrastructure as Code**
 
 [Terraform-Setup.pdf](https://github.com/user-attachments/files/22144108/Terraform-Setup.pdf)
-VPC with public and private subnets across 2 Availability Zones
-Internet Gateway attached to the VPC
-NAT Gateway in public subnet for private subnet routing
-EC2 → Target Groups → → Targets (targets healthy).
-EC2 → Security Groups for ALB‑SG/ECS‑SG/RDS‑SG (inbound rules visible).
-Auto Scaling Group with EC2 instances in private subnets
+1.VPC with public and private subnets across 2 Availability Zones
+2.Internet Gateway attached to the VPC
+3.NAT Gateway in public subnet for private subnet routing
+4.EC2 → Target Groups → → Targets (targets healthy).
+5.EC2 → Security Groups for ALB‑SG/ECS‑SG/RDS‑SG (inbound rules visible).
+6.Auto Scaling Group with EC2 instances in private subnets
 
 
 
 **Part 2: Application Deployment**
 
 [Node.ls-Application.pdf](https://github.com/user-attachments/files/22144146/Node.ls-Application.pdf)
-ECS → Clusters → → Services: show Service Running/Desired, Tasks running.
-RDS → Databases → (status = Available, engine, security group).
-SECRET MENAGER-> Credentials-> (using database credentials in secret menages).
+1.ECS → Clusters → → Services: show Service Running/Desired, Tasks running.
+2.RDS → Databases → (status = Available, engine, security group).
+3.SECRET MENAGER-> Credentials-> (using database credentials in secret menages).
 
 
 
@@ -37,17 +37,17 @@ SECRET MENAGER-> Credentials-> (using database credentials in secret menages).
 [Part 3 CICD Pipeline.pdf](https://github.com/user-attachments/files/22144300/Part.3.CICD.Pipeline.pdf)
 
  **Source Stage**  
- Trigger pipeline on Git push to main branch  
- Pull source code from the GitHub repository  
+ 1.Trigger pipeline on Git push to main branch  
+ 2.Pull source code from the GitHub repository  
 
 **Build Stage**  
- Build and test Docker image  
- Run basic security scans on the image  
- Push Docker image to AWS ECR  
+ 1.Build and test Docker image  
+ 2.Run basic security scans on the image  
+ 3.Push Docker image to AWS ECR  
 
  **Deploy Stage**  
- Deploy application to staging environment  
- Deploy to production with manual approval
+ 1.Deploy application to staging environment  
+ 2.Deploy to production with manual approval
 
 
 
@@ -56,23 +56,23 @@ SECRET MENAGER-> Credentials-> (using database credentials in secret menages).
 [Monitoring_Backup.pdf](https://github.com/user-attachments/files/22144354/Monitoring_Backup.pdf)
 
 **CloudWatch Metrics & Dashboards**
- Set up custom metrics for the application  
- Create CloudWatch dashboard with key metrics (CPU, Memory, RequestCount, Latency)  
+1.Set up custom metrics for the application  
+2.Create CloudWatch dashboard with key metrics (CPU, Memory, RequestCount, Latency)  
 
  **Logging**
- Centralized logging using CloudWatch Logs  
- Aggregate logs from ECS/EC2 containers  
+1.Centralized logging using CloudWatch Logs  
+2.Aggregate logs from ECS/EC2 containers  
 
  **Health Checks**
- Configure application health endpoints (e.g., /health)  
- Set ALB health check paths and thresholds  
+1.Configure application health endpoints (e.g., /health)  
+2.Set ALB health check paths and thresholds  
 
  **RDS Backup**
- Enable automated backups for RDS instance  
- Optionally enable snapshot scheduling for disaster recovery
+ 1.Enable automated backups for RDS instance  
+ 2.Optionally enable snapshot scheduling for disaster recovery
 
 **Back_UP**
- Configure backup retention period (e.g., 7–30 days)  
+ 1.Configure backup retention period (e.g., 7–30 days)  
 
 
 
