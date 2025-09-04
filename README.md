@@ -8,6 +8,9 @@ The deployment ensures scalability, high availability, and observability using *
 ## 🏗️ Architecture
 <img width="1536" height="1024" alt="aws-" src="https://github.com/user-attachments/assets/ade097df-252e-42de-8d2b-de8be7b7d737" />
 
+
+
+
 **Part 1: Infrastructure as Code**
 
 [Terraform-Setup.pdf](https://github.com/user-attachments/files/22144108/Terraform-Setup.pdf)
