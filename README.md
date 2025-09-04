@@ -11,7 +11,7 @@ The deployment ensures scalability, high availability, and observability using *
 
 
 
------------**Part 1: Infrastructure as Code**---------------
+**Part 1: Infrastructure as Code**
 
 [Terraform-Setup.pdf](https://github.com/user-attachments/files/22144108/Terraform-Setup.pdf)
 1.VPC with public and private subnets across 2 Availability Zones
@@ -23,7 +23,7 @@ The deployment ensures scalability, high availability, and observability using *
 
 
 
-------------**Part 2: Application Deployment**-------------
+**Part 2: Application Deployment**
 
 [Node.ls-Application.pdf](https://github.com/user-attachments/files/22144146/Node.ls-Application.pdf)
 1.ECS → Clusters → → Services: show Service Running/Desired, Tasks running.
@@ -32,7 +32,7 @@ The deployment ensures scalability, high availability, and observability using *
 
 
 
---------------**Part 3: CI/CD Pipeline**--------------------
+**Part 3: CI/CD Pipeline**
   
 [Part 3 CICD Pipeline.pdf](https://github.com/user-attachments/files/22144300/Part.3.CICD.Pipeline.pdf)
 
@@ -50,28 +50,27 @@ The deployment ensures scalability, high availability, and observability using *
  2.Deploy to production with manual approval
 
 
-
-----------**Part 4: Monitoring & Logging**-------------------
+**Part 4: Monitoring & Logging**
 
 [Monitoring_Backup.pdf](https://github.com/user-attachments/files/22144354/Monitoring_Backup.pdf)
 
--------------**CloudWatch Metrics & Dashboards**----------------------
+**CloudWatch Metrics & Dashboards**
 1.Set up custom metrics for the application  
 2.Create CloudWatch dashboard with key metrics (CPU, Memory, RequestCount, Latency)  
 
--------------- **Logging**-----------------------
+**Logging**
 1.Centralized logging using CloudWatch Logs  
 2.Aggregate logs from ECS/EC2 containers  
 
--------------- **Health Checks**------------------
+**Health Checks**
 1.Configure application health endpoints (e.g., /health)  
 2.Set ALB health check paths and thresholds  
 
- ---------------**RDS Backup*------------------
+ **RDS Backup**
  1.Enable automated backups for RDS instance  
  2.Optionally enable snapshot scheduling for disaster recovery
 
----------------**Back_UP**-------------------
+**Back_UP**
  1.Configure backup retention period (e.g., 7–30 days)  
 
 
