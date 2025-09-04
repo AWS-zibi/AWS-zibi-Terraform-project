@@ -36,16 +36,16 @@ The deployment ensures scalability, high availability, and observability using *
   
 [Part 3 CICD Pipeline.pdf](https://github.com/user-attachments/files/22144300/Part.3.CICD.Pipeline.pdf)
 
- **Source Stage**  
+ -------------**Source Stage** ----------------
  1.Trigger pipeline on Git push to main branch  
  2.Pull source code from the GitHub repository  
 
-**Build Stage**  
+--------------**Build Stage**-----------------  
  1.Build and test Docker image  
  2.Run basic security scans on the image  
  3.Push Docker image to AWS ECR  
 
- **Deploy Stage**  
+ -------------**Deploy Stage** ---------------
  1.Deploy application to staging environment  
  2.Deploy to production with manual approval
 
