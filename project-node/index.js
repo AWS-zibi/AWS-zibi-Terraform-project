@@ -8,7 +8,7 @@ const server = http.createServer((req, res) => {
 
     res.writeHead(200, {"Content-Type": "text/plain"});
 
-    res.end("“ Oops… I accidentally deployed Hello World to the Cloud ☁️ with Terraform Keep calm ☕ and terraform apply !\n");
+    res.end("“ Oops… I accidentally deployed Hello World to the Cloud ☁️ with Terraform Keep calm ☕ and terraform apply ($) !\n");
 
   } else {
 
